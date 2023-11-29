@@ -19,7 +19,7 @@ jobs:
     - name: Upload Docker image artifact
       run: docker save -o helloword.tar
     - name: Upload a Build Artifact
-  uses: actions/upload-artifact@v3.1.3
-  with:
-    name: helloword
-    path: helloword.tar
+      uses: actions/upload-artifact@v3.1.3
+      with:
+        name: helloword
+        path: helloword.tar
