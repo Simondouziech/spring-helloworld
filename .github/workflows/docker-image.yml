@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: docker build . --file Dockerfile --tag helloword
+    - name: Upload Docker image artifact
+      run: docker save -o helloword.tar
+    - name: Upload a Build Artifact
+  uses: actions/upload-artifact@v3.1.3
+  with:
+    name: helloword
+    path: helloword.tar
